@@ -11,3 +11,14 @@ services:
       POSTGRES_USER: '${POSTGRES_USER:-test}'
     ports:
       - '5432:5432'
+  app:
+    build: .
+    command: npm run start:dev
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: test
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
